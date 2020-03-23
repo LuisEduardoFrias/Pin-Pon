@@ -1,0 +1,93 @@
+.bodi 
+{
+    border: 2px solid red;
+    position: relative;
+    margin: 0px;
+    padding : 0px;
+    background-color: aquamarine;
+}
+    
+.titulo
+{
+    position : absolute;
+    top : 7px;
+    left : 10px;
+    color:blue;
+    display : inline-block; 
+    font-size : 30px;
+} 
+
+.cabesera
+{
+    border: 3px double black;
+    margin: 0px;
+    padding : 0px;
+    position : relative;
+    top : 10px;
+    left : 50%; 
+    transform : translateX(-50%);
+    transform :borderRadius(30px); 
+    height : 50px;
+    background : red;
+    box-sizing : border-box;
+}
+
+.caja
+{
+    border: 3px double black;
+    margin: 0px;
+    padding : 0px;
+    position: relative;
+    top : 40px;
+    left : 50%; 
+    transform : translateX(-50%);
+    box-sizing: border-box;
+}
+
+.movimientos
+{
+    border: 3px double black; 
+    height: 46px;
+    margin: 0px;
+    padding : 0px;
+    position: absolute;
+    bottom : 10px;
+    left : 50%;
+    transform : translateX(-50%);
+    box-sizing : border-box;
+    background : red;
+}
+
+.moveBola
+{
+    border: 3px double black;
+    height: 30px;
+    width : 200px;
+    position : absolute ;
+    top : 2px ;
+    left : 10px;
+    font-size : 20px;
+}
+
+.TIMER
+{
+border: 3px double black;
+height: 30px; 
+width : 190px;
+position : absolute;
+top : 2px;
+left: 52%;
+font-size : 20px;
+transform : translateX(-50%);
+}
+            
+.moveRaqueta
+{
+border: 3px double black;
+height: 30px;
+width : 150px;
+position : absolute;
+top : 2px; 
+right: 10px; 
+font-size : 20px; 
+}
