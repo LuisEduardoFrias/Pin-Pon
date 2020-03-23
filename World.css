@@ -4,7 +4,7 @@
     position: relative;
     margin: 0px;
     padding : 0px;
-    background-color: aquamarine;
+    background-color: white;
 }
     
 .titulo
@@ -90,4 +90,20 @@ position : absolute;
 top : 2px; 
 right: 10px; 
 font-size : 20px; 
+}
+
+.Raqueta
+{
+height: 40px;
+width: 200px; 
+position: absolute;
+bottom: 10px;
+background-color: yellow;
+}
+
+.background
+{
+    height: 150px;
+    width: 900px;
+    text-align: center;
 }

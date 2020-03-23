@@ -15,7 +15,8 @@ PRONTER,
 MOVEBOLA,
 MOVERAQUETA,
 TIMER,
-titulo; 
+titulo,
+Raqueta; 
 
 var sectAncho, 
 sectAlto, 
@@ -38,6 +39,7 @@ PRONTER = $(".movimientos");
 MOVEBOLA = $(".moveBola");
 TIMER = $ (".TIMER"); 
 MOVERAQUETA = $(".moveRaqueta");
+Raqueta = $(".Raqueta");
 bodi = $(".bodi");
 header=$(".cabesera"); 
 titulo=$(".titulo"); 
@@ -51,6 +53,8 @@ estado = false;
         
 function ActualizarBODY() 
 {
+    var g = Raqueta.width + "--" + Raqueta.height;
+    
          AnchoBT = (window.innerWidth-5); 
          AltoBT = (window.innerHeight-5); 
          Esqueleto(); 
@@ -163,7 +167,7 @@ function actualizarpelota()
 
 ////////////////////////////////////////////////////////////////////////////
     
-$(".raqueta").css({
+/*$(".raqueta").css({
 background:"blue",
 borderRadius:"10%",
 height:"20px",
@@ -171,72 +175,65 @@ width:"100px",
 position:"absolute",
 bottom:"10px",
 border:"1px solid black",
-left:iz+"px"});
+left:iz+"px"});*/
+
+Raqueta.css({left:iz+"px"});
   
+//////Codigo para movil en pruevas.
 var body = document.querySelector("body");
 
 function startup() 
 { 
 
-body.addEventListener("touchstart", handleStart, false);
+    body.addEventListener("touchstart", handleStart, false);
 
-body.addEventListener("touchend", handleEnd, false);
+    body.addEventListener("touchend", handleEnd, false);
 
-body.addEventListener("touchmove", handleMove, false); 
+    body.addEventListener("touchmove", handleMove, false); 
 
 }
 
 function handleStart(evt) 
 { 
-    
-evt.preventDefault();
+    evt.preventDefault();
 
-var ctx = body.getContext("2d"); 
+    var ctx = body.getContext("2d"); 
 
-var touches = evt.changedTouches;
+    var touches = evt.changedTouches;
 
-ctx.lineWidth = 4; 
+    ctx.lineWidth = 4; 
 
-header.css({
-background : "blue"
-}); 
-
+    header.css({background : "blue"}); 
 }
-
 
 function handleMove(evt) 
 { 
 
-evt.preventDefault();
+    evt.preventDefault();
 
-var ctx = body.getContext("2d"); 
+    var ctx = body.getContext("2d"); 
 
-var touches = evt.changedTouches;
+    var touches = evt.changedTouches;
 
-ctx.lineWidth = 4; 
+    ctx.lineWidth = 4; 
 
-header.css({
-background : "grenn"
-}); 
-
+    header.css({background : "grenn"}); 
 }
 
 function handleEnd(evt) 
 { 
+    evt.preventDefault(); 
 
-evt.preventDefault(); 
+    var ctx = el.getContext("2d"); 
 
-var ctx = el.getContext("2d"); 
+    var touches = evt.changedTouches;
 
-var touches = evt.changedTouches;
+    ctx.lineWidth = 4; 
 
-ctx.lineWidth = 4; 
-
-header.css({
-background : "yellow"
-}); 
-
+    header.css({background : "yellow"}); 
 }
+
+
   
 /////////////////////
 
@@ -245,33 +242,40 @@ background : "yellow"
  function(event)
  {
  
-     if(raquetamove == true)
-     {
+    if(raquetamove == true)
+    {
      
-     MOVERAQUETA.text(" Raqueta X : " + iz ); 
-     
-     if(iz >= 0)
-     {
-     
-     if(event.keyCode == 65)
-     { 
-     
-     iz-=20; 
-     
-     $(".raqueta").css({
-     left: iz + "px"}); } } 
-     
-     if(iz <= (AnchoBT - (AnchoBT*0.20))- 112) { 
-     
-     if(event.keyCode == 68) 
-     { 
-     
-     iz+=20; $(".raqueta").css(
-     {
-         left: iz + "px"
-     });
-     
-     } } } });
+        MOVERAQUETA.text(" Raqueta X : " + iz ); 
+        
+        if(iz >= 0)
+        {
+        
+            if(event.keyCode == 65)
+            { 
+            
+                iz-=20; 
+                
+                Raqueta.css({left: iz + "px"});
+                //$(".raqueta").css({left: iz + "px"}); 
+                
+            } 
+        } 
+                
+        if(iz <= (AnchoBT - (AnchoBT*0.20))- 112)
+        { 
+                
+            if(event.keyCode == 68) 
+            { 
+                
+                iz+=20; 
+
+                Raqueta.css({left: iz + "px"});
+               //$(".raqueta").css({left: iz + "px"});
+
+            } 
+        } 
+    } 
+});
      
 ////////////////////////////////////////////////////////////////////////////
 
@@ -285,55 +289,50 @@ function coliciones()
     if( Y <= 0 ) 
     { 
     
-    if(AUMENTOPN == true) 
+        if(AUMENTOPN == true) 
+        { 
+            AUMENTOPN = false; 
+        } 
+        else
+        {
+            AUMENTOPN = true; 
+        } 
+        
+        dy = -dy; 
+    } 
+    
+    if( X <= 0 || X >= sectAncho-15 )
     { 
-    
-    AUMENTOPN = false; 
-    } 
-    else
-    { 
-    
-    AUMENTOPN = true; 
-    } 
-    
-    dy = -dy; 
-    } 
-    
-    if( X <= 0 || X >= sectAncho-15 ) { 
-    
-    if(AUMENTOPN == true) 
-    { 
-    
-    AUMENTOPN = false; 
-    } 
-    else 
-    { 
-    
-    AUMENTOPN = true; 
-    } 
-    
-    dx = -dx; 
+        if(AUMENTOPN == true) 
+        { 
+            AUMENTOPN = false; 
+        } 
+        else 
+        {    
+            AUMENTOPN = true; 
+        } 
+        
+        dx = -dx; 
     } 
     
     if( Y >= sectAlto) 
     { 
-    
         Y = 0;
+
         alert(" Perdiste! \n Al presionar 'Aceptar' el juego inicia automaticamente. \n 'Click Aceptar' ")
         
         H = 0;
         M = 0;
+
         Contador = 0;
-        
-        
-        
     } 
     
-if( Y >= (sectAlto-50) && X >= iz && X <= (iz+100) )
+    if( Y >= (sectAlto-50) && X >= iz && X <= (iz + 200) )
     {
-    
-    dy = -dy;
-    } } 
+       
+        dy = -dy;
+    } 
+} 
     
 ///////////////////////////////////////////////////////////////////////////
 
